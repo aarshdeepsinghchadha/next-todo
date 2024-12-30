@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Special_Elite } from "next/font/google"; 
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +11,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const specialElite = Special_Elite({
+  subsets: ['latin'], 
+  weight: "400",
+  variable: '--font-special-elite',
 });
 
 export const metadata: Metadata = {
@@ -25,9 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${specialElite.variable} ${geistSans.variable} ${geistMono.variable} antialiased`} // Apply Special Elite font
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
